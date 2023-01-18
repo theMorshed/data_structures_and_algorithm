@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// node structure 
 class node {
 public:
     int data;
@@ -13,23 +14,27 @@ public:
     }    
 };
 
+// linked list class
 class SinglyLinkedList {
 public:
     node *head;
     int size;
 
+    // constructor
     SinglyLinkedList()
     {
         head = NULL;
         size = 0;
     }
 
+    // create new node before add in the list
     node *createNewNode(int value)
     {
         node *newNode = new node(value);
         return newNode;
     }
 
+    // add node in head
     void insertNodeAtHead(int value)
     {
         node *newNode = createNewNode(value);
@@ -42,6 +47,7 @@ public:
         head = newNode;
     }
 
+    // print the whole list
     void printList()
     {
         node *current = head;
@@ -50,6 +56,12 @@ public:
             current = current->next;
         }
         cout << "\n";
+    }
+
+    // get size
+    void getSize()
+    {
+        cout << size << "\n";
     }
 };
 
@@ -60,6 +72,7 @@ int main()
     list.insertNodeAtHead(30);
     list.insertNodeAtHead(20);
     list.printList();
+    list.getSize();
 
     return 0;
 }
