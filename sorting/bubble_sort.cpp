@@ -38,10 +38,15 @@ vector<int> bubble_sort(vector<int> arr)
 {
     vector<int> sorted = arr;
     for (int i = 0; i < sorted.size(); i++) {
+        bool sorted_check = true;
         for (int j = 0; j < sorted.size() - 1 - i; j++) {
             if (sorted[j] > sorted[j + 1]) {
                 swap(sorted[j], sorted[j + 1]);
+                sorted_check = false;
             }
+        }
+        if (sorted_check) {
+            break;
         }
     }
     return sorted;
