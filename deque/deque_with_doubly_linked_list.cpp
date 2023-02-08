@@ -173,6 +173,34 @@ public:
         }
         rev = 0;
     }
+
+    // complexity O(n)
+    int max()
+    {
+        node *current = head;
+        int max_num = current->data;
+        while (current != NULL) {
+            if (current->data > max_num) {
+                max_num = current->data;
+            }
+            current = current->next;
+        }
+        return max_num;
+    }
+
+    // complexity O(n)
+    int min()
+    {
+        node *current = head;
+        int min_num = current->data;
+        while (current != NULL) {
+            if (current->data < min_num) {
+                min_num = current->data;
+            }
+            current = current->next;
+        }
+        return min_num;
+    }
 };
 
 int main()
@@ -189,6 +217,8 @@ int main()
     cout << "Front: " << dq.front() << " Back: " << dq.back() << "\n";
     dq.push_back(45);
     cout << "Front: " << dq.front() << " Back: " << dq.back() << "\n";
+    cout << "Maximum Number is: " << dq.max() << "\n";
+    cout << "Minimum Number is: " << dq.min() << "\n";
 
     return 0;
 }
