@@ -84,6 +84,58 @@ public:
             cout << "Node: " << a->id << " Left child: " << l << " Right child: " << r << " Parent: " << p << "\n";
         }
     }
+
+    void DFS(node *a)
+    {
+        if (a == NULL) {
+            return;
+        }
+        cout << a->id << " ";
+        DFS(a->left);
+        DFS(a->right);
+    }
+
+    void Inorder(node *a)
+    {
+        if (a == NULL) {
+            return;
+        }
+        Inorder(a->left);
+        cout << a->id << " ";
+        Inorder(a->right);
+    }
+
+    void Preorder(node *a)
+    {
+        if (a == NULL) {
+            return;
+        }
+        cout << a->id << " ";
+        Preorder(a->left);
+        Preorder(a->right);
+    }
+
+    void Postorder(node *a)
+    {
+        if (a == NULL) {
+            return;
+        }
+        Postorder(a->left);
+        Postorder(a->right);
+        cout << a->id << " ";
+    }
+
+    void Search(node *a, int value)
+    {
+        if (a == NULL) {
+            return;
+        }
+        if (a->value == value) {
+            cout << a->id << " ";
+        }
+        Search(a->left, value);
+        Search(a->right, value);
+    }
 };
 
 int main()
@@ -97,6 +149,15 @@ int main()
     bt.Insertion(8, 10);
     bt.Insertion(9, 10);
     bt.BFS();
+    bt.DFS(bt.root);
+    cout << "\n";
+    bt.Search(bt.root, 10);
+    bt.Inorder(bt.root);
+    cout << "\n";
+    bt.Preorder(bt.root);
+    cout << "\n";
+    bt.Postorder(bt.root);
+    cout << "\n";
 
     return 0;
 }
