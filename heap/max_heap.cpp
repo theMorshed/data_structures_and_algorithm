@@ -79,7 +79,29 @@ public:
         Delete(0);
         return max_num;
     }
+
+    void build_from_array(vector<int> &a)
+    {
+        nodes = a;
+        int n = nodes.size();
+        int last_leaf_node = n / 2 - 1;
+        for (int i = last_leaf_node; i >= 0; i--) {
+            down_heapify(i);
+        }
+    }
 };
+
+vector<int> heap_sort(vector<int> a)
+{
+    MaxHeap h;
+    h.build_from_array(a);
+    vector<int> ans;
+    for(int i = 0; i < a.size(); i++) {
+        ans.push_back(h.extractMax());
+    }
+    reverse(ans.begin(), ans.end());
+    return ans;
+}
 
 int main()
 {
@@ -96,6 +118,19 @@ int main()
 
     cout<<"Max element = "<<heap.extractMax()<<"\n";
     cout<<"Max element = "<<heap.extractMax()<<"\n";
+
+    MaxHeap h;
+    vector<int> a = {1, 2, 3, 4, 10, 9, 8, 7};
+    h.build_from_array(a);
+    cout << h.extractMax() << "\n";
+    cout << h.getMax() << "\n";
+
+    vector<int>sorted_a = heap_sort(a);
+    for(int i=0;i<sorted_a.size();i++)
+    {
+        cout<<sorted_a[i]<<" ";
+    }
+    cout<<"\n";
 
     return 0;
 }
